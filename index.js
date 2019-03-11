@@ -1,18 +1,26 @@
 let startButton = document.getElementById("start-search-button");
 let marksBtn = document.getElementById("marks-btn");
-let currentPage = 1;
-let totalPages = 0;
-let elementsOnPage = 10;
+let nextLoad = document.getElementById('next-load');
 
 
-startButton.addEventListener("click", startHandler);
+startButton.addEventListener('click', startHandler);
+nextLoad.addEventListener('click', nextPage);
+marksBtn.addEventListener('click', showMarks);
 
 function startHandler() {
   let city = document.getElementById("city-input");
   let script = document.createElement("SCRIPT");
   script.src =
-    "https://api.nestoria.it" + "/api?action=search_listings&encoding=json&listing_type=" +
-    "buy" + "&place_name=" + city.value + "&callback=callbackResult";
+    "https://api.nestoria.it/api?action=search_listings&country=it&encoding=json&listing_type=" +
+    "buy" + "&place_name=" + city.value + '&page=1' + "&callback=callbackResult";
+  document.getElementsByTagName("head")[0].appendChild(script);
+}
+function nextPage(){
+  let city = document.getElementById("city-input");
+  let script = document.createElement("SCRIPT");
+  script.src =
+    "https://api.nestoria.it/api?action=search_listings&country=it&encoding=json&listing_type=" +
+    "buy" + "&place_name=" + city.value + '&page=2' + "&callback=callbackResult";
   document.getElementsByTagName("head")[0].appendChild(script);
 }
 
@@ -22,17 +30,12 @@ function callbackResult(result) {
     var containerForGalleryPage = document.getElementById("list");
     containerForGalleryPage.className = "grid";
 
-    currentPage = result.response.page;
-    console.log(currentPage);
-    totalPages = result.response.total_pages;
-    console.log(totalPages);
-
     containerForGalleryPage.addEventListener("mouseover", hoverOnPhoto);
     containerForGalleryPage.addEventListener("mouseout", hoverOnPhoto);
 
     console.log(result.response);
 
-    for (var i = 0; i < result.response.listings.length-12; i++) {
+    for (var i = 0; i < result.response.listings.length; i++) {
       house = result.response.listings[i];
       renderImages(house, i, "item", containerForGalleryPage);
     }
@@ -52,15 +55,7 @@ function callbackResult(result) {
         }
       });
     }
-    createBtnShowMore();
-    let showMoreBtn = document.getElementById('show-more');
-    console.log(showMoreBtn);
-    showMoreBtn.addEventListener('click', function (e){
-      for (var i = 8; i < result.response.listings.length; i++) {
-        house = result.response.listings[i];
-        renderImages(house, i, "item", containerForGalleryPage);
-      }
-    })
+   nextLoad.style.display = 'block';
   }
 }
 
@@ -73,7 +68,7 @@ function renderImages(house, number, className, mainDiv) {
   let link = document.createElement('button');
   link.className = 'add-marks';
   shadowDiv.className = 'shadow';
-  link.innerHTML = 'Add to marks';
+  link.innerHTML = 'ADD TO MARKS';
   shadowDiv.innerHTML = house.price_formatted + '<br>';
   shadowDiv.innerHTML += house.title + '<br>';
   shadowDiv.innerHTML += house.summary + '<br>';
@@ -103,12 +98,7 @@ function hoverOnPhoto(event) {
   }
 }
 
-function createBtnShowMore() {
-  let list = document.getElementById("cover");
-  let showMoreBtn = document.createElement('button');
-  showMoreBtn.className = 'btn btn-info';
-  showMoreBtn.id = 'show-more';
-
-  showMoreBtn.innerHTML = 'SHOW MORE';
-  list.appendChild(showMoreBtn);
+function showMarks() {
+  let hideContainer = document.getElementById('hide-content');
+  hideContainer.style.display = 'none';
 }

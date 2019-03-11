@@ -15,36 +15,39 @@
 </head>
 <body>
     <div class="row" style="background-color:slategray">
-        <div class="col-sm-6 text-center">YOUR APPARTMENT IN ITALY</div>
+        <div class="col-sm-6 text-center">CHOOSE YOUR APPARTMENT</div>
         <div class="col-sm-6 text-center">
         <button type="button" class="btn btn-info" id="marks-btn">MARKS</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-10 offset-sm-2 text-center">
-            <div class="info-form">
-                <form class="justify-content-center">
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <input type="text" class="form-control" placeholder="ENTER CITY" id="city-input"/>
+    <div class="container" id="hide-content">
+        <div class="row">
+            <div class="col-sm-10 offset-sm-2 text-center">
+                <div class="info-form">
+                    <form class="justify-content-center">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" placeholder="ENTER CITY" id="city-input"/>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <button class="btn btn-success" type="button" id="start-search-button">
+                                    SEARCH
+                                </button>
+                            </div>
                         </div>
-                    <div class="col-md-4 mb-3">
-                        <button class="btn btn-success" type="button" id="start-search-button">
-                            SEARCH
-                        </button>
-                    </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <br>
             </div>
-            <br>
         </div>
+        <section class="text-center" id="cover">
+            <div id="cover-caption" >
+                <div class="grid d-none" id="list"></div>
+                <div id="container-page" class="container"></div>
+            </div>
+            <button class="btn btn-info mx-auto" id="next-load">Show more</button>
+        </section>
     </div>
-    <section id="cover" class="text-center">
-    <div id="cover-caption ">
-        <div class="grid d-none" id="list"></div>
-            <div id="container-page" class="container"></div>
-    </div>
-    </section>
 <script src="index.js"></script>
 </body>
 
