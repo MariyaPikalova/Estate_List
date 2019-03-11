@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="col-sm-12 text-center" style="background-color:slategray">
-        <p>YOUR APPARTMENT IN ITALY</p>
+    <div class="row" style="background-color:slategray">
+        <div class="col-sm-6 text-center">YOUR APPARTMENT IN ITALY</div>
+        <div class="col-sm-6 text-center">
+        <button type="button" class="btn btn-info" id="marks-btn">MARKS</button>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-10 offset-sm-2 text-center">
@@ -36,10 +39,12 @@
             <br>
         </div>
     </div>
+    <section id="cover">
     <div id="cover-caption">
-        <div class="grid d-none" id="garbage"></div>
-        <div id="container-page" class="container"></div>
+        <div class="grid d-none" id="list"></div>
+            <div id="container-page" class="container"></div>
     </div>
+    </section>
 <script src="index.js"></script>
 </body>
 

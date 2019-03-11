@@ -12,10 +12,10 @@ body {
 .grid {
     display: grid;
     grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 150px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-auto-rows: 250px;
     grid-auto-flow: row dense;
-}
+  }
 
 .item {
     position: relative;
@@ -46,4 +46,10 @@ body {
     height: 100%;
     background-color: slategray;
     opacity: 0.7;
+}
+[class*="col-sm-6"] {
+    padding: 15px;
+}
+[class*="col-sm-10"] {
+    padding: 25px;
 }
