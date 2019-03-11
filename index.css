@@ -53,3 +53,6 @@ body {
 [class*="col-sm-10"] {
     padding: 25px;
 }
+#show-more {
+    margin-top: 25px;
+}

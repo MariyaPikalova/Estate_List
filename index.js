@@ -23,19 +23,20 @@ function callbackResult(result) {
     containerForGalleryPage.className = "grid";
 
     currentPage = result.response.page;
+    console.log(currentPage);
     totalPages = result.response.total_pages;
+    console.log(totalPages);
 
     containerForGalleryPage.addEventListener("mouseover", hoverOnPhoto);
     containerForGalleryPage.addEventListener("mouseout", hoverOnPhoto);
 
     console.log(result.response);
 
-    for (var i = 0; i < result.response.listings.length; i++) {
-
+    for (var i = 0; i < result.response.listings.length-12; i++) {
       house = result.response.listings[i];
       renderImages(house, i, "item", containerForGalleryPage);
-
     }
+
     let addMarks = document.getElementsByClassName('add-marks');
     console.log(addMarks);
     for (let i = 0; i < addMarks.length; i++ ){
@@ -51,6 +52,15 @@ function callbackResult(result) {
         }
       });
     }
+    createBtnShowMore();
+    let showMoreBtn = document.getElementById('show-more');
+    console.log(showMoreBtn);
+    showMoreBtn.addEventListener('click', function (e){
+      for (var i = 8; i < result.response.listings.length; i++) {
+        house = result.response.listings[i];
+        renderImages(house, i, "item", containerForGalleryPage);
+      }
+    })
   }
 }
 
@@ -68,6 +78,7 @@ function renderImages(house, number, className, mainDiv) {
   shadowDiv.innerHTML += house.title + '<br>';
   shadowDiv.innerHTML += house.summary + '<br>';
   shadowDiv.innerHTML += house.updated_in_days_formatted + '<br>';
+
 
   childDiv.appendChild(shadowDiv);
   childDiv.appendChild(link);
@@ -90,4 +101,14 @@ function hoverOnPhoto(event) {
       event.target.style.display = "none";
     }
   }
+}
+
+function createBtnShowMore() {
+  let list = document.getElementById("cover");
+  let showMoreBtn = document.createElement('button');
+  showMoreBtn.className = 'btn btn-info';
+  showMoreBtn.id = 'show-more';
+
+  showMoreBtn.innerHTML = 'SHOW MORE';
+  list.appendChild(showMoreBtn);
 }
