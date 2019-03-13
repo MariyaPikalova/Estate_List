@@ -78,8 +78,10 @@ function renderImages(house, number, className, mainDiv) {
     let itemId = childDiv.id.split('-');
     let butId = link.id.split('-');
     if (itemId[1]=== butId[1]){
-       let key = 'key'+ Date.now() + Math.random();
-       localStorage.setItem(key, childDiv.outerHTML);}
+      let key = 'key'+ Date.now() + Math.random();
+      link.style.display = 'none';
+      localStorage.setItem(key, childDiv.outerHTML);
+    }
   })
 }
 
@@ -112,7 +114,7 @@ function showMarks() {
     let res = localStorage.getItem(key);
     console.log(res);
     let containerForSavingPage = document.createElement('div');
-    containerForSavingPage.className = 'grid';
+    containerForSavingPage.className = 'grid col-sm-6 offset-sm-2';
     saveDiv.appendChild(containerForSavingPage);
     containerForSavingPage.innerHTML = res;
     containerForSavingPage.addEventListener("mouseover", hoverOnPhoto);
