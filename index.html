@@ -17,7 +17,8 @@
     <div class="row" style="background-color:slategray">
         <div class="col-sm-6 text-center">CHOOSE YOUR APPARTMENT</div>
         <div class="col-sm-6 text-center">
-        <button type="button" class="btn btn-info" id="marks-btn">MARKS</button>
+        <button type="button" class="btn btn-info" id="marks-btn">FAVORITES</button>
+            <button type="button" class="btn btn-info" id="exit-btn" style="display: none">EXIT</button>
         </div>
     </div>
     <div class="container" id="hide-content">
@@ -41,13 +42,22 @@
             </div>
         </div>
         <section class="text-center" id="cover">
-            <div id="cover-caption" >
+            <div id="cover-caption">
                 <div class="grid d-none" id="list"></div>
-                <div id="container-page" class="container"></div>
             </div>
             <button class="btn btn-info mx-auto" id="next-load">Show more</button>
         </section>
+
     </div>
+    <div class="container">
+        <section class="text-center">
+            <div id="cover-marks">
+                <div id="show-marks" style="display: none;"></div>
+            </div>
+        </section>
+
+    </div>
+
 <script src="index.js"></script>
 </body>
 

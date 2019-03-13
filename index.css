@@ -57,3 +57,7 @@ body {
     display: none;
     margin-top: 25px;
 }
+#cover-marks {
+    margin-top: 25px;
+    width: 100%;
+}
