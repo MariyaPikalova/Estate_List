@@ -102,11 +102,11 @@ function hoverOnPhoto(event) {
 }
 
 function showMarks() {
- hideContainer.style.display = 'none';
- saveDiv.style.display = 'block';
- exitBtn.style.display = 'inline-block';
+  hideContainer.style.display = 'none';
+  saveDiv.style.display = 'block';
+  exitBtn.style.display = 'inline-block';
 
-  for (let i=0;i<localStorage.length;i++){
+  for (let i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
     // console.log(key);
     let res = localStorage.getItem(key);
@@ -115,6 +115,8 @@ function showMarks() {
     containerForSavingPage.className = 'grid';
     saveDiv.appendChild(containerForSavingPage);
     containerForSavingPage.innerHTML = res;
+    containerForSavingPage.addEventListener("mouseover", hoverOnPhoto);
+    containerForSavingPage.addEventListener("mouseout", hoverOnPhoto);
   }
 }
 
